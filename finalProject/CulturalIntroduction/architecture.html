@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>漸漸流失的文化-客家人</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+
+	<style>
+		html {
+			height: 100%;
+		}
+
+		body {
+			background-image: url('background.png');
+
+			background-color: #F5F5F5;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-position: center;
+			background-size: cover;
+		}
+
+		.content {
+			background-color: #FFFFFF;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-position: center;
+			background-size: cover;
+		}
+
+		.logo {
+			height: 150px;
+		}
+	</style>
+
+
+	<script>
+		$(function () {
+			$("#top").click(function () {
+				jQuery("html,body").animate({
+					scrollTop: 0
+				}, 150);
+			});
+		});
+		$(window).scroll(function () {
+			if ($(this).scrollTop() > 100) {
+				$('#top').fadeIn("fast");
+			} else {
+				$('#top').stop().fadeOut("fast");
+			}
+		});
+	</script>
+</head>
+<style>
+	.list-group {
+		font-size: 18px;
+	}
+
+	.list-group1 {
+		font-size: 18px;
+		background-position: center;
+	}
+
+	.size2 {
+		font-size: 24px;
+		color: rgb(55, 77, 30);
+		font-weight: bold;
+	}
+
+	p {
+
+		font-size: 30px;
+
+
+	}
+
+	#top {
+		position: fixed;
+		border-radius: 50px;
+		right: 20px;
+		bottom: 30px;
+		padding: 15px 30px;
+		font-size: 28px;
+		background: rgba(0, 0, 0, 0.76);
+		color: rgb(255, 255, 255);
+		cursor: pointer;
+		z-index: 1000
+	}
+
+	body {
+		background-image: url('background.png');
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+		background-attachment: fixed;
+
+	}
+</style>
+<style>
+	#myImg {
+		border-radius: 5px;
+		cursor: pointer;
+		transition: 0.3s;
+	}
+
+	#myImg:hover {
+		opacity: 0.7;
+	}
+
+	/* The Modal (background) */
+
+	.modal {
+		display: none;
+		/* Hidden by default */
+		position: fixed;
+		/* Stay in place */
+		z-index: 1;
+		/* Sit on top */
+		padding-top: 100px;
+		/* Location of the box */
+		left: 0;
+		top: 0;
+		width: 100%;
+		/* Full width */
+		height: 100%;
+		/* Full height */
+		overflow: auto;
+		/* Enable scroll if needed */
+		background-color: rgb(0, 0, 0);
+		/* Fallback color */
+		background-color: rgba(0, 0, 0, 0.9);
+		/* Black w/ opacity */
+	}
+
+	/* Modal Content (image) */
+
+	.modal-content {
+		margin: auto;
+		display: block;
+		width: 80%;
+		max-width: 700px;
+	}
+
+	/* Caption of Modal Image */
+
+	#caption {
+		margin: auto;
+		display: block;
+		width: 80%;
+		max-width: 700px;
+		text-align: center;
+		color: #ccc;
+		padding: 10px 0;
+		height: 150px;
+	}
+
+	/* Add Animation */
+
+	.modal-content,
+	#caption {
+		-webkit-animation-name: zoom;
+		-webkit-animation-duration: 0.6s;
+		animation-name: zoom;
+		animation-duration: 0.6s;
+	}
+
+	@-webkit-keyframes zoom {
+		from {
+			-webkit-transform: scale(0)
+		}
+		to {
+			-webkit-transform: scale(1)
+		}
+	}
+
+	@keyframes zoom {
+		from {
+			transform: scale(0.1)
+		}
+		to {
+			transform: scale(1)
+		}
+	}
+
+	/* The Close Button */
+
+	.close {
+		position: absolute;
+		top: 15px;
+		right: 35px;
+		color: #f1f1f1;
+		font-size: 40px;
+		font-weight: bold;
+		transition: 0.3s;
+	}
+
+	.close:hover,
+	.close:focus {
+		color: #bbb;
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+	/* 100% Image Width on Smaller Screens */
+
+	@media only screen and (max-width: 700px) {
+		.modal-content {
+			width: 100%;
+		}
+	}
+</style>
+
+<body>
+	<div id="myModal" class="modal">
+		<span class="close">×</span>
+		<img class="modal-content" id="img01">
+		<div id="caption"></div>
+	</div>
+	<!-- Page Content -->
+	<div id="top">˄</div>
+	<div>
+		<div style="width:70%;margin:0px auto;">
+			<div class="w3-teal">
+				<div class="w3-container logo">
+					<h1>漸漸流失的文化-客家人</h1>
+				</div>
+			</div>
+			<div class="w3-bar w3-light-green">
+				<a href=" " class="w3-bar-item w3-button">首頁</a>
+				<div class="w3-dropdown-hover">
+					<button class="w3-button">客家節慶</button>
+					<div class="w3-dropdown-content w3-bar-block w3-card-4">
+						<a href="#" class="w3-bar-item w3-button">Link 1</a>
+						<a href="#" class="w3-bar-item w3-button">Link 2</a>
+						<a href="#" class="w3-bar-item w3-button">Link 3</a>
+					</div>
+				</div>
+				<div class="w3-dropdown-hover">
+					<button class="w3-button">文化介紹</button>
+					<div class="w3-dropdown-content w3-bar-block w3-card-4">
+						<a href="origin.html" class="w3-bar-item w3-button">起源</a>
+						<a href="food.html" class="w3-bar-item w3-button">飲食</a>
+						<a href="architecture.html" class="w3-bar-item w3-button">建築</a>
+						<a href="clothes.html" class="w3-bar-item w3-button">服飾文化</a>
+
+					</div>
+				</div>
+				<div class="w3-dropdown-hover">
+					<button class="w3-button">每日一句</button>
+					<div class="w3-dropdown-content w3-bar-block w3-card-4">
+						<a href="#" class="w3-bar-item w3-button">Link 1</a>
+						<a href="#" class="w3-bar-item w3-button">Link 2</a>
+						<a href="#" class="w3-bar-item w3-button">Link 3</a>
+					</div>
+				</div>
+				<div class="w3-dropdown-hover">
+					<button class="w3-button">客家美食</button>
+					<div class="w3-dropdown-content w3-bar-block w3-card-4">
+						<a href="#" class="w3-bar-item w3-button">Link 1</a>
+						<a href="#" class="w3-bar-item w3-button">Link 2</a>
+						<a href="#" class="w3-bar-item w3-button">Link 3</a>
+					</div>
+
+				</div>
+				<div class="w3-dropdown-hover">
+					<button class="w3-button">景點介紹</button>
+					<div class="w3-dropdown-content w3-bar-block w3-card-4">
+						<a href="#" class="w3-bar-item w3-button">Link 1</a>
+						<a href="#" class="w3-bar-item w3-button">Link 2</a>
+						<a href="#" class="w3-bar-item w3-button">Link 3</a>
+					</div>
+
+				</div>
+				<div class="w3-dropdown-hover">
+					<button class="w3-button">意見回覆</button>
+					<div class="w3-dropdown-content w3-bar-block w3-card-4">
+						<a href="#" class="w3-bar-item w3-button">聊天室</a>
+						<a href="#" class="w3-bar-item w3-button">聯絡我們</a>
+					</div>
+				</div>
+			</div>
+			<div class="w3-container content">
+				<div>
+					<p>
+						<i class="fa fa-home"></i>
+					</p>
+					<a href=" ">首頁</a> > 文化介紹 > 建築
+				</div>
+				<div style="margin-left:5% ;font-family:微軟正黑體;text-shadow:7px 7px 7px rgb(255, 255, 255) ">
+					<div>
+						<br>
+						<strong>
+							<p class="size1">南部夥房與中、北部伙房:</p>
+						</strong>
+						<br>
+
+						<P class="size2">
+							<br>臺灣北中南在聚落地理學上早就有北部多丘陵多散村，
+							<br>南部多平原多集村，中部尤其是彰化(一般都說在大甲溪與濁水溪之間)即有夾在中間，
+							<br>以水文、山麓為依靠的帶狀連村，因此早在民國50年代，從美濃周刊與臺中東勢的山城周刊，
+							<br>即在文字上，有以六堆客家民居用「夥房」， 中部山城石岡、東勢客家民居用「伙房」的專門用語，
+							<br>加上苗栗公館鄉的徐家大伙房與劉舉人伙房的地圖標記，使得集村的夥房與散村的伙房，
+							<br>形成一個南北客家民居建築形式不同的區分。
+
+							<div>
+								<br>
+								<br>
+
+								<br>
+								<p>
+									<picture>
+										<source srcset="image" type="image">
+										<img id="myImg" src="南部夥房.png" class="img-fluid img-thumbnail" alt="南部夥房" title="南部夥房" width="400" height="350" onMouseOver="this.width=this.width*1.5;this.height=this.height*1.5"
+										 onMouseOut="this.width=this.width/1.5;this.height=this.height/1.5">
+									</picture>
+									<br>
+									<picture>
+										<source srcset="image" type="image">
+										<img id="myImg" src="客家北部伙房.png" class="img-fluid img-thumbnail" alt="中、北部伙房" title="中、北部伙房" width="400" height="350" onMouseOver="this.width=this.width*1.5;this.height=this.height*1.5"
+										 onMouseOut="this.width=this.width/1.5;this.height=this.height/1.5">
+									</picture>
+
+
+								</p>
+
+								<br>
+
+
+
+
+
+								<div id="exampleAccordion" data-children=".item">
+									<div class="item">
+										<a style="text-decoration:none" data-toggle="collapse" data-parent="#exampleAccordion" href="#exampleAccordion1" role="button"
+										 aria-expanded="true" aria-controls="exampleAccordion1">
+											<p>南部"夥"房:</p>
+										</a>
+										<div id="exampleAccordion1" class="collapse " role="tabpanel">
+											<p class="mb-3">
+												<p class="size2">南部的客家夥房，由於是建立在集村上的民居建築圍聚，每一座民居夥房三合院，
+													<br>是在正堂、橫屋之外，空間不夠住之下的彈性增建，所以是夾擠在土地產權地界與周側圍牆的「塞」空間，
+													<br>這些外圍建築六堆客家人稱之為圍龍屋。</p>
+											</p>
+										</div>
+									</div>
+									<br>
+
+									<div class="item">
+										<a style="text-decoration:none" data-toggle="collapse" data-parent="#exampleAccordion" href="#exampleAccordion2" role="button"
+										 aria-expanded="false" aria-controls="exampleAccordion2">
+											<p>中、北部"伙"房:</p>
+										</a>
+										<div id="exampleAccordion2" class="collapse" role="tabpanel">
+											<p class="mb-3">
+												<p class="size2">中北部的客家伙房，由於是建立在散村與帶狀連村上的丘陵地與山麓，每一棟客家民居間是有距離的，
+													<br>其間空隙是很大的，因此它的擴張是在正堂、橫屋的外側，用前面圍、後面圍，甚至有方的造型框圈，
+													<br>也有圓的造型框圈，以後者居多，圍弧狀的框圈還有作兩層以上的，當地人稱這種正堂、橫屋外的框圈作法叫「圍屋」，
+													<br>為房屋擴建的中性稱法。</p>
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<br>
+						</P>
+					</div>
+
+				</div>
+			</div>
+			<!-- <foooter class="w3-container content" style="text-align: center;">
+    	2017©逢甲大學 資訊系<br>
+    	版權所有  翻版必究
+    </foooter> -->
+			<!-- javascript -->
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+			<script type="text/javascript" src="./assets/js/mailus.js"></script>
+		</div>
+
+</body>
+
+</html>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>漸漸流失的文化-客家人</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            background-image: url('background.png');
+
+            background-color: #F5F5F5;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .content {
+            background-color: #FFFFFF;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .logo {
+            height: 150px;
+        }
+    </style>
+
+
+    <script>
+        $(function () {
+            $("#top").click(function () {
+                jQuery("html,body").animate({
+                    scrollTop: 0
+                }, 150);
+            });
+        });
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 100) {
+                $('#top').fadeIn("fast");
+            } else {
+                $('#top').stop().fadeOut("fast");
+            }
+        });
+    </script>
+</head>
+<style>
+    .list-group {
+        font-size: 18px;
+    }
+
+    .list-group1 {
+        font-size: 18px;
+        background-position: center;
+    }
+
+    .size2 {
+        font-size: 24px;
+        color: rgb(55, 77, 30);
+        font-weight: bold;
+    }
+
+    p {
+
+        font-size: 30px;
+
+
+    }
+
+    #top {
+        position: fixed;
+        border-radius: 50px;
+        right: 20px;
+        bottom: 30px;
+        padding: 15px 30px;
+        font-size: 28px;
+        background: rgba(0, 0, 0, 0.76);
+        color: rgb(255, 255, 255);
+        cursor: pointer;
+        z-index: 1000
+    }
+
+    body {
+        background-image: url('background.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+
+    }
+</style>
+<style>
+    #myImg {
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    #myImg:hover {
+        opacity: 0.7;
+    }
+
+    /* The Modal (background) */
+
+    .modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Sit on top */
+        padding-top: 100px;
+        /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.9);
+        /* Black w/ opacity */
+    }
+
+    /* Modal Content (image) */
+
+    .modal-content {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+    }
+
+    /* Caption of Modal Image */
+
+    #caption {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        text-align: center;
+        color: #ccc;
+        padding: 10px 0;
+        height: 150px;
+    }
+
+    /* Add Animation */
+
+    .modal-content,
+    #caption {
+        -webkit-animation-name: zoom;
+        -webkit-animation-duration: 0.6s;
+        animation-name: zoom;
+        animation-duration: 0.6s;
+    }
+
+    @-webkit-keyframes zoom {
+        from {
+            -webkit-transform: scale(0)
+        }
+        to {
+            -webkit-transform: scale(1)
+        }
+    }
+
+    @keyframes zoom {
+        from {
+            transform: scale(0.1)
+        }
+        to {
+            transform: scale(1)
+        }
+    }
+
+    /* The Close Button */
+
+    .close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    /* 100% Image Width on Smaller Screens */
+
+    @media only screen and (max-width: 700px) {
+        .modal-content {
+            width: 100%;
+        }
+    }
+</style>
+
+<body>
+    <div id="myModal" class="modal">
+        <span class="close">×</span>
+        <img class="modal-content" id="img01">
+        <div id="caption"></div>
+    </div>
+    <!-- Page Content -->
+    <div id="top">˄</div>
+    <div>
+        <div style="width:70%;margin:0px auto;">
+            <div class="w3-teal">
+                <div class="w3-container logo">
+                    <h1>漸漸流失的文化-客家人</h1>
+                </div>
+            </div>
+            <div class="w3-bar w3-light-green">
+                <a href=" " class="w3-bar-item w3-button">首頁</a>
+                <div class="w3-dropdown-hover">
+                    <button class="w3-button">客家節慶</button>
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        <a href="#" class="w3-bar-item w3-button">Link 1</a>
+                        <a href="#" class="w3-bar-item w3-button">Link 2</a>
+                        <a href="#" class="w3-bar-item w3-button">Link 3</a>
+                    </div>
+                </div>
+                <div class="w3-dropdown-hover">
+                    <button class="w3-button">文化介紹</button>
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        <a href="origin.html" class="w3-bar-item w3-button">起源</a>
+                        <a href="food.html" class="w3-bar-item w3-button">飲食</a>
+                        <a href="architecture.html" class="w3-bar-item w3-button">建築</a>
+                        <a href="clothes.html" class="w3-bar-item w3-button">服飾文化</a>
+
+                    </div>
+                </div>
+                <div class="w3-dropdown-hover">
+                    <button class="w3-button">每日一句</button>
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        <a href="#" class="w3-bar-item w3-button">Link 1</a>
+                        <a href="#" class="w3-bar-item w3-button">Link 2</a>
+                        <a href="#" class="w3-bar-item w3-button">Link 3</a>
+                    </div>
+                </div>
+                <div class="w3-dropdown-hover">
+                    <button class="w3-button">客家美食</button>
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        <a href="#" class="w3-bar-item w3-button">Link 1</a>
+                        <a href="#" class="w3-bar-item w3-button">Link 2</a>
+                        <a href="#" class="w3-bar-item w3-button">Link 3</a>
+                    </div>
+
+                </div>
+                <div class="w3-dropdown-hover">
+                    <button class="w3-button">景點介紹</button>
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        <a href="#" class="w3-bar-item w3-button">Link 1</a>
+                        <a href="#" class="w3-bar-item w3-button">Link 2</a>
+                        <a href="#" class="w3-bar-item w3-button">Link 3</a>
+                    </div>
+
+                </div>
+                <div class="w3-dropdown-hover">
+                    <button class="w3-button">意見回覆</button>
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        <a href="#" class="w3-bar-item w3-button">聊天室</a>
+                        <a href="#" class="w3-bar-item w3-button">聯絡我們</a>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-container content">
+                <div>
+                    <p>
+                        <i class="fa fa-home"></i>
+                    </p>
+                    <a href=" ">首頁</a> > 文化介紹 > 傳統服飾
+                </div>
+                <div style="margin-left:5% ;font-family:微軟正黑體;text-shadow:7px 7px 7px rgb(255, 255, 255) ">
+                    <div>
+                        <br>
+
+                        <div>
+                            <strong>
+                                <p class="size1">客家傳統服飾—藍衫:</p>
+                            </strong>
+                            <br>
+                            <div>
+                                <p>
+                                    <picture>
+                                        <source srcset="image" type="image">
+                                        <img id="myImg" src="藍衫.png" class="img-fluid img-thumbnail" alt="客家藍衫" style="width:600px" style="height:350px" onMouseOver="this.width=this.width*1.5;this.height=this.height*1.5"
+                                            onMouseOut="this.width=this.width/1.5;this.height=this.height/1.5">
+                                    </picture>
+
+                                </p>
+
+                                <div id="exampleAccordion" data-children=".item">
+                                    <div class="item">
+                                        <a style="text-decoration:none" data-toggle="collapse" data-parent="#exampleAccordion" href="#exampleAccordion1" role="button"
+                                            aria-expanded="true" aria-controls="exampleAccordion1">
+                                            <p>●經濟性:</p>
+                                        </a>
+                                        <div id="exampleAccordion1" class="collapse " role="tabpanel">
+                                            <p class="mb-3">
+
+                                                <div class="container">
+
+                                                    <br>
+                                                    <ul class="size2">
+                                                        <li>所用布料耐洗、耐穿，所用染料以丘陵地常見植物大菁為藍色染劑。</li>
+                                                        <li>衣服上隱蔽之處，採用粗布剪接替代。</li>
+                                                    </ul>
+                                                </div>
+
+
+                                            </p>
+                                        </div>
+
+
+                                        <a style="text-decoration:none" data-toggle="collapse" data-parent="#exampleAccordion" href="#exampleAccordion2" role="button"
+                                            aria-expanded="true" aria-controls="exampleAccordion2">
+                                            <p>●便利性:</p>
+                                        </a>
+                                        <div id="exampleAccordion2" class="collapse " role="tabpane2">
+                                            <p class="mb-3">
+
+                                                <div class="container">
+
+                                                    <br>
+                                                    <ul class="size2">
+                                                        <li>結構簡單、富機能性，便於操作勞動。</li>
+                                                        <li>大襟上直扣的配置止於腰線上，便於婦女哺乳；工作時，又可將前身摺短塞於腰帶。</li>
+                                                        <li>
+                                                            寬大且翻摺之袖口，和貫通之腰帶，可用以放置物品或錢幣，隨身而不累贅。</li>
+                                                    </ul>
+                                                </div>
+
+
+                                            </p>
+                                        </div>
+
+
+                                        <a style="text-decoration:none" data-toggle="collapse" data-parent="#exampleAccordion" href="#exampleAccordion3" role="button"
+                                            aria-expanded="true" aria-controls="exampleAccordion3">
+                                            <p>●長久性:</p>
+                                        </a>
+                                        <div id="exampleAccordion3" class="collapse " role="tabpane3">
+                                            <p class="mb-3">
+
+                                                <div class="container">
+
+                                                    <br>
+                                                    <ul class="size2">
+                                                        <li>穿著時間，可自早到晚，自春至冬。</li>
+                                                        <li>穿著之期間，可自少年時期至老年，適用期長。</li>
+                                                    </ul>
+                                                </div>
+
+
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- <foooter class="w3-container content" style="text-align: center;">
+    	2017©逢甲大學 資訊系<br>
+    	版權所有  翻版必究
+    </foooter> -->
+                        <!-- javascript -->
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                        <script type="text/javascript" src="./assets/js/mailus.js"></script>
+                    </div>
+
+</body>
+
+</html>
