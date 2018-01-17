@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>漸漸流失的文化-客家人</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            background-image: url('background.png');
+
+            background-color: #F5F5F5;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
+
+        h2 {
+            font-family: 微軟正黑體;
+
+        }
+
+        .content {
+            background-color: blue;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+
+        }
+
+        .logo {
+            height: 150px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* The actual timeline (the vertical ruler) */
+        .timeline {
+            position: relative;
+            /* max-width: 2000px; */
+            margin: 0 auto;
+        }
+
+        /* The actual timeline (the vertical ruler) */
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: relative;
+            background-color: black;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        /* Container around content */
+        .container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: rgb(139,137,112);
+            width: 50%;
+            border-radius: 10px;
+        }
+
+        /* The circles on the timeline */
+        .container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -13px;
+            background-color: white;
+            border: 4px solid #FF9F55;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+
+        }
+
+        /* Place the container to the left */
+        .left {
+            left: 0;
+        }
+
+        /* Place the container to the right */
+        .right {
+            left: 50%;
+        }
+
+        /* Add arrows to the left container (pointing right) */
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid white;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent lightyellow;
+        }
+
+        /* Add arrows to the right container (pointing left) */
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid lightyellow;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent lightyellow transparent transparent ;
+        }
+
+        /* Fix the circle for containers on the right side */
+        .right::after {
+            left: -12px;
+        }
+
+        /* The actual content */
+        .content {
+            padding: 20px 30px;
+            background-color: lightyellow;
+            position: relative;
+            border-radius: 6px;
+        }
+
+        /* Media queries - Responsive timeline on screens less than 600px wide */
+        @media all and (max-width: 600px) {
+          /* Place the timelime to the left */
+          .timeline::after {
+            left: 31px;
+          }
+          
+          /* Full-width containers */
+          .container {
+            width: 100%;
+            padding-left: 70px;
+            padding-right: 25px;
+          }
+          
+          /* Make sure that all arrows are pointing leftwards */
+          .container::before {
+            left: 60px;
+            border: medium solid white;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent white transparent transparent;
+          }
+
+          /* Make sure all circles are at the same spot */
+          .left::after, .right::after {
+            left: 15px;
+          }
+          
+          /* Make all right containers behave like the left ones */
+          .right {
+            left: 0%;
+          }
+        }
+
+        /* Tooltip container */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            //border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+        }
+
+        /* Tooltip text */
+        .tooltip .tooltiptextleft {
+            visibility: hidden;
+            width: 250px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 5px 0;
+            border-radius: 15px;        /* 角 */
+         
+            /* Position the tooltip text */
+            position: absolute;
+            z-index: 1;
+            top: -5px;
+            right: 105%;
+
+            opacity: 0;
+            transition: opacity 2s;     /* Fade in  2s */
+        }
+
+        .tooltip .tooltiptextleft::after {
+            content: " ";
+            position: absolute;
+            top: 27%;
+            left: 100%; /* To the right of the tooltip */
+            margin-top: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent transparent transparent black;
+        }
+
+        /* Show the tooltip text when you mouse over the tooltip container */
+        .tooltip:hover .tooltiptextleft {
+            visibility: visible;
+            opacity: 2;
+        }
+
+        .tooltip .tooltiptextright {
+            visibility: hidden;
+            width: 250px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 5px 0;
+            border-radius: 15px;    /* 角 */
+         
+            /* Position the tooltip text */
+            position: absolute;
+            z-index: 1;
+            top: -5px;
+            left: 107%;
+
+            opacity: 0;
+            transition: opacity 2s;     /* Fade in  2s */
+        }
+
+        .tooltip .tooltiptextright::after {
+            content: " ";
+            position: absolute;
+            top: 27%;
+            right: 100%; /* To the left of the tooltip */
+            margin-top: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent black transparent transparent;
+        }
+
+        /* Show the tooltip text when you mouse over the tooltip container */
+        .tooltip:hover .tooltiptextright {
+            visibility: visible;
+            opacity: 2;
+        }
+
+        /* 幻燈片 */
+        .w3-left, .w3-right, .w3-badge {cursor:pointer}
+        .w3-badge {height:13px;width:13px;padding:0}
+        .mySlides {display:none}
+        .mySlides1 {display:none}
+        .mySlides2 {display:none}
+        .mySlides3 {display:none}
+        .mySlides4 {display:none}
+        .mySlides5 {display:none}
+        .mySlides6 {display:none}
+        .mySlides7 {display:none}
+        .mySlides8 {display:none}
+        .mySlides9 {display:none}
+        .mySlides10 {display:none}
+        .mySlides11 {display:none}
+        .mySlides12 {display:none}
+        .mySlides13 {display:none}
+
+        #topButton {
+          display: none;
+          position: fixed;
+          bottom: 20px;
+          right: 30px;
+          z-index: 99;
+          border: none;
+          outline: none;
+          background-color: lightgray;
+          color: black;
+          cursor: pointer;
+          padding: 15px;
+          border-radius: 50%;
+        }
+
+        #topButton:hover {
+          background-color: white;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- Page Content -->
+    <button onclick="topFunction()" id="topButton" title="Go to top">Top</button>
+
+    <div>
+        <div style="width:70%;margin:0px auto;">
+            <div class="w3-teal">
+                <div class="w3-container logo">
+                    <h1>漸漸流失的文化-客家人</h1>
+                </div>
+            </div>
+
+            <div class="w3-bar w3-light-green">
+                <a href=" " class="w3-bar-item w3-button">首頁</a>
+                <div class="w3-dropdown-hover">
+                    <button class="w3-button">客家節慶</button>
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        <a href="#ct1" class="w3-bar-item w3-button">台中東勢新丁粄節</a>
+                        <a href="#ct2" class="w3-bar-item w3-button">苗栗火旁龍</a>
+                        <a href="#ct3" class="w3-bar-item w3-button">六堆祈福尖炮城</a>
+                        <a href="#ct4" class="w3-bar-item w3-button">竹東天穿日 臺灣客家山歌比賽</a>
+                        <a href="#ct5" class="w3-bar-item w3-button">客家桐花祭</a>
+                        <a href="#ct6" class="w3-bar-item w3-button">海客文化藝術季</a>
+                        <a href="#ct7" class="w3-bar-item w3-button">乙未客家戰役文化季</a>
+                        <a href="#ct8" class="w3-bar-item w3-button">臺中巧聖仙師文化祭</a>
+                        <a href="#ct9" class="w3-bar-item w3-button">客鼓鳴心-鼓王爭霸戰</a>
+                        <a href="#ct10" class="w3-bar-item w3-button">「義魄千秋」義民祭</a>
+                        <a href="#ct11" class="w3-bar-item w3-button">雲林‧詔安客家文化節</a>
+                        <a href="#ct12" class="w3-bar-item w3-button">國姓搶成功</a>
+                        <a href="#ct13" class="w3-bar-item w3-button">臺東好米收冬祭</a>
+                        <a href="#ct14" class="w3-bar-item w3-button">客家婚禮‧客家宴</a>
+                    </div>
+                </div>
+
+                <div class="w3-dropdown-hover">
+                    <button class="w3-button">文化介紹</button>
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        <a href="#" class="w3-bar-item w3-button">起源</a>
+                        <a href="#" class="w3-bar-item w3-button">飲食</a>
+                        <a href="#" class="w3-bar-item w3-button">建築</a>
+                        <a href="#" class="w3-bar-item w3-button">服飾文化</a>
+
+                    </div>
+                </div>
+
+                <div class="w3-dropdown-hover">
+                    <button class="w3-button">每日一句</button>
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        <a href="#" class="w3-bar-item w3-button">Link 1</a>
+                        <a href="#" class="w3-bar-item w3-button">Link 2</a>
+                        <a href="#" class="w3-bar-item w3-button">Link 3</a>
+                    </div>
+                </div>
+
+                <div class="w3-dropdown-hover">
+                    <button class="w3-button">客家美食</button>
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        <a href="#" class="w3-bar-item w3-button">Link 1</a>
+                        <a href="#" class="w3-bar-item w3-button">Link 2</a>
+                        <a href="#" class="w3-bar-item w3-button">Link 3</a>
+                    </div>
+                </div>
+
+                <div class="w3-dropdown-hover">
+                    <button class="w3-button">景點介紹</button>
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        <a href="#" class="w3-bar-item w3-button">Link 1</a>
+                        <a href="#" class="w3-bar-item w3-button">Link 2</a>
+                        <a href="#" class="w3-bar-item w3-button">Link 3</a>
+                    </div>
+                </div>
+
+                <div class="w3-dropdown-hover">
+                    <button class="w3-button">意見回覆</button>
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        <a href="#" class="w3-bar-item w3-button">留言板</a>
+                        <a href="#" class="w3-bar-item w3-button">聯絡我們</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="w3-container content">
+                <div>
+                    <p>
+                        <i class="fa fa-home"></i>
+                        <a href=" ">首頁</a> > 客家節慶</p>
+                </div>
+                <div>
+                    <p> <!--內容-->
+                        <div class="timeline">
+                            <div class="container left">
+                                <div id = "ct1" class="content">
+                                    <div class="tooltip">
+                                        <h2>二月---台中東勢新丁粄節</h2>
+                                        <span class="tooltiptextleft">過去是勞力密集的農業社會，家族總希望多子多孫多福氣，當時客家鄉親為求得子女，以「米粄」供品祈求上天，並許願將會以更多「米粄」還願，結果靈驗。因此，漸漸將因求得子女（即新丁）而向神明還願的「米粄」供品稱為「新丁粄」。</span>
+                                        <p></p>
+                                        <div class="w3-content w3-display-container" style="max-width: 300px" style="max-height: 250px">
+                                            <img class="mySlides" src="新丁粄1.jpg" style="max-width: 100%" style="max-height: 100%"> 
+                                            <img class="mySlides" src="新丁粄2.jpg" style="max-width: 100%" style="max-height: 100%">
+                                            <img class="mySlides" src="新丁粄3.jpg" style="max-width: 100%" style="max-height: 100%">
+                                            <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width: 100%">
+                                                <div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;</div>
+                                                <div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">&#10095;</div>
+                                                <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
+                                                <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
+                                                <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="container right">
+                                <div id = "ct2" class="content">
+                                    <div class="tooltip">
+                                        <h2>二月---苗栗火旁龍</h2>
+                                        <span class="tooltiptextright">「火旁龍活動」是專屬於苗栗、客家人的一種元宵節慶文化活動，清朝自大陸客家原鄉流傳至臺灣後，四、五○年代盛極一時。表演時一邊舞龍一邊燃放鞕炮，極具客家特色，是珍貴的傳統民俗文化。</span>
+                                        <p></p>
+                                        <div class="w3-content w3-display-container" style="max-width: 300px" style="max-height: 250px">
+                                            <img class="mySlides1" src="火旁龍1.jpg" style="max-width: 100%" style="max-height: 100%">
+                                            <img class="mySlides1" src="火旁龍2.jpg" style="max-width: 100%" style="max-height: 100%">
+                                            <img class="mySlides1" src="火旁龍3.jpg" style="max-width: 100%" style="max-height: 100%">
+                                            <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width: 100%">
+                                                <div class="w3-left w3-hover-text-khaki" onclick="plusDivs1(-1)">&#10094;</div>
+                                                <div class="w3-right w3-hover-text-khaki" onclick="plusDivs1(1)">&#10095;</div>
+                                                <span class="w3-badge demo1 w3-border w3-transparent w3-hover-white" onclick="currentDiv1(1)"></span>
+                                                <span class="w3-badge demo1 w3-border w3-transparent w3-hover-white" onclick="currentDiv1(2)"></span>
+                                                <span class="w3-badge demo1 w3-border w3-transparent w3-hover-white" onclick="currentDiv1(3)"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="container left">
+                                <div id = "ct3" class="content">
+                                    <div class="tooltip">
+                                        <h2>三月---六堆祈福尖炮城</h2>
+                                        <span class="tooltiptextleft">早期屏東縣六堆客家先民來臺開墾，初期時常有其他族群來犯，因而設置類似烽火臺功能的瞭望臺，一旦其中一個堆區受到攻擊，就會在瞭望臺上點燃鞭炮，通知其他五堆區域鄉民，加強防禦及提供協助。</span>
+                                        <div class="w3-content w3-display-container" style="max-width: 300px" style="max-height: 250px">
+                                            <img class="mySlides2" src="尖炮城1.jpeg" style="max-width: 100%" style="max-height: 100%">
+                                            <img class="mySlides2" src="尖炮城2.jpeg" style="max-width: 100%" style="max-height: 100%">
+                                            <img class="mySlides2" src="尖炮城3.jpeg" style="max-width: 100%" style="max-height: 100%">
+                                            <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width: 100%">
+                                                <div class="w3-left w3-hover-text-khaki" onclick="plusDivs2(-1)">&#10094;</div>
+                                                <div class="w3-right w3-hover-text-khaki" onclick="plusDivs2(1)">&#10095;</div>
+                                                <span class="w3-badge demo2 w3-border w3-transparent w3-hover-white" onclick="currentDiv2(1)"></span>
+                                                <span class="w3-badge demo2 w3-border w3-transparent w3-hover-white" onclick="currentDiv2(2)"></span>
+                                                <span class="w3-badge demo2 w3-border w3-transparent w3-hover-white" onclick="currentDiv2(3)"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="container right">
+                                <div id = "ct4" class="content">
+                                    <div class="tooltip">
+                                        <h2>三月---竹東天穿日山歌比賽</h2>
+                                        <span class="tooltiptextright">過去客家人習慣於耕種或農閒時隨興創作歌謠，唱著唱著逐漸演變為山歌，山歌主要是靠口頭創作、隨興而來。對北部客家人來說，農曆正月二十日「天穿日」是非常特別的一天，習俗中這天大家得放下工作，從事休閒活動，後來更有了天穿日唱客家山歌的習俗。民國54年舉辦第一屆竹東客家山歌比賽即吸引上萬民眾觀賽，造成轟動，持續舉辦至今。</span>
+                                        <div class="w3-content w3-display-container" style="max-width: 300px" style="max-height: 250px">
+                                            <img class="mySlides3" src="天穿日1.jpeg" style="max-width: 100%" style="max-height: 100%">
+                                            <img class="mySlides3" src="天穿日2.jpeg" style="max-width: 100%" style="max-height: 100%">
+                                            <img class="mySlides3" src="天穿日3.jpeg" style="max-width: 100%" style="max-height: 100%">
+                                            <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%">
+                                                <div class="w3-left w3-hover-text-khaki" onclick="plusDivs3(-1)">&#10094;</div>
+                                                <div class="w3-right w3-hover-text-khaki" onclick="plusDivs3(1)">&#10095;</div>
+                                                <span class="w3-badge demo3 w3-border w3-transparent w3-hover-white" onclick="currentDiv3(1)"></span>
+                                                <span class="w3-badge demo3 w3-border w3-transparent w3-hover-white" onclick="currentDiv3(2)"></span>
+                                                <span class="w3-badge demo3 w3-border w3-transparent w3-hover-white" onclick="currentDiv3(3)"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="container left">
+                                <div id = "ct5" class="content">
+                                    <div class="tooltip">
+                                        <h2>四月---客家桐花祭</h2>
+                                        <span class="tooltiptextleft">客家人經歷了兩、三百年「開山打林」的歷史，滿山遍野的油桐樹，曾是客家人早年重要的經濟作物，所以油桐樹與客家人的淵源相當深厚。油桐生命力強，也被用來描述性格節儉、堅毅的客家人。隨著時代變遷，油桐樹的經濟價值不復存在，但是強勁的生命力，仍在山林間隨春日時節花開花落，為客家庄的經濟變遷做最好的見證。也如同歷經多次遷徙的客家民族，在面對不同環境的淬煉中，總是堅守根本、堅持創新。</span>
+                                        <p></p>
+                                        <div class="w3-content w3-display-container" style="max-width: 300px" style="max-height: 250px">
+                                            <img class="mySlides4" src="桐花季1.jpg" style="max-width: 100%" style="max-height: 100%"> 
+                                            <img class="mySlides4" src="桐花季2.jpg" style="max-width: 100%" style="max-height: 100%">
+                                            <img class="mySlides4" src="桐花季3.jpg" style="max-width: 100%" style="max-height: 100%">
+                                            <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width: 100%">
+                                                <div class="w3-left w3-hover-text-khaki" onclick="plusDivs4(-1)">&#10094;</div>
+                                                <div class="w3-right w3-hover-text-khaki" onclick="plusDivs4(1)">&#10095;</div>
+                                                <span class="w3-badge demo4 w3-border w3-transparent w3-hover-white" onclick="currentDiv4(1)"></span>
+                                                <span class="w3-badge demo4 w3-border w3-transparent w3-hover-white" onclick="currentDiv4(2)"></span>
+                                                <span class="w3-badge demo4 w3-border w3-transparent w3-hover-white" onclick="currentDiv4(3)"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="container right">
+                                <div id = "ct6" class="content">
+                                    <div class="tooltip">
+                                        <h2>五月---海客文化藝術季</h2>
+                                        <span class="tooltiptextright">桃園新屋「永安漁港」是全臺唯一客家漁港，該區特有的兩種古老捕魚方式分別是牽罟及築石塭，牽罟以簡單的曳地網捕魚，是臺灣古老的捕魚方式之一。海螺是號召漁民牽罟捕魚的工具，當聽到螺聲響起漁民都會放下手邊工作來幫忙，靠眾人之力與大海拔河捕撈漁獲。</span>
+                                        <p></p>
+                                        <div class="w3-content w3-display-container" style="max-width: 300px" style="max-height: 250px">
+                                            <img class="mySlides5" src="海客1.jpeg" style="max-width: 100%" style="max-height: 100%"> 
+                                            <img class="mySlides5" src="海客2.jpg" style="max-width: 100%" style="max-height: 100%">
+                                            <img class="mySlides5" src="海客3.jpg" style="max-width: 100%" style="max-height: 100%">
+                                            <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width: 100%">
+                                                <div class="w3-left w3-hover-text-khaki" onclick="plusDivs5(-1)">&#10094;</div>
+                                                <div class="w3-right w3-hover-text-khaki" onclick="plusDivs5(1)">&#10095;</div>
+                                                <span class="w3-badge demo5 w3-border w3-transparent w3-hover-white" onclick="currentDiv5(1)"></span>
+                                                <span class="w3-badge demo5 w3-border w3-transparent w3-hover-white" onclick="currentDiv5(2)"></span>
+                                                <span class="w3-badge demo5 w3-border w3-transparent w3-hover-white" onclick="currentDiv5(3)"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="container left">
+                                <div id = "ct7" class="content">
+                                    <div class="tooltip">
+                                        <h2>六月---乙未客家戰役文化季</h2>
+                                        <span class="tooltiptextleft">乙未戰爭發生於1895年，臺灣因《馬關條約》被清政府割讓予日本後，臺灣各地住民為抵抗日本接收統治而發起的，是臺灣史上，戰鬥地域最廣、時間最長、參與人數最多、規模最大的一次戰爭，其中以臺灣客家族群的義民軍作戰最有力。義民軍負有保鄉衛梓的傳統責任，多數驍勇善戰，至清末仍是重要的民間自衛武力。為表彰乙未戰爭中忠勇護國、保鄉衛土的客家義民軍而於龍潭興建忠義廟。</span>
+                                        <p></p>
+                                        <div class="w3-content w3-display-container" style="max-width: 300px" style="max-height: 250px">
+                                            <img class="mySlides6" src="戰役1.jpg" style="max-width: 100%" style="max-height: 100%"> 
+                                            <img class="mySlides6" src="戰役2.jpg" style="max-width: 100%" style="max-height: 100%">
+                                            <img class="mySlides6" src="戰役3.jpg" style="max-width: 100%" style="max-height: 100%">
+                                            <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width: 100%">
+                                                <div class="w3-left w3-hover-text-khaki" onclick="plusDivs6(-1)">&#10094;</div>
+                                                <div class="w3-right w3-hover-text-khaki" onclick="plusDivs6(1)">&#10095;</div>
+                                                <span class="w3-badge demo6 w3-border w3-transparent w3-hover-white" onclick="currentDiv6(1)"></span>
+                                                <span class="w3-badge demo6 w3-border w3-transparent w3-hover-white" onclick="currentDiv6(2)"></span>
+                                                <span class="w3-badge demo6 w3-border w3-transparent w3-hover-white" onclick="currentDiv6(3)"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="container right">
+                                <div id = "ct8" class="content">
+                                    <div class="tooltip">
+                                        <h2>六月---臺中巧聖仙師文化祭</h2>
+                                        <span class="tooltiptextright">春秋末葉時期有一位工匠名為魯班，後世尊他為中國工匠師祖，也稱做巧聖仙師。我們都知道「士、農、工、商」各行各業都有守護神，或稱為行業神，讀書人崇拜「至聖先師-孔子」，而眾多有專門技術或從事勞動生產者崇拜的就是「巧聖仙師-魯班」。在全臺主祀魯班的廟宇有34間，位於臺中市東勢客家聚落的「巧聖仙師廟」有240年的歷史，是全臺最古老且唯一主祀魯班的開基祖廟。</span>
+                                        <p></p>
+                                        <div class="w3-content w3-display-container" style="max-width: 300px" style="max-height: 250px">
+                                            <img class="mySlides7" src="巧聖仙師1.jpeg" style="max-width: 100%" style="max-height: 100%"> 
+                                            <img class="mySlides7" src="巧聖仙師2.jpeg" style="max-width: 100%" style="max-height: 100%">
+                                            <img class="mySlides7" src="巧聖仙師3.jpeg" style="max-width: 100%" style="max-height: 100%">
+                                            <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width: 100%">
+                                                <div class="w3-left w3-hover-text-khaki" onclick="plusDivs7(-1)">&#10094;</div>
+                                                <div class="w3-right w3-hover-text-khaki" onclick="plusDivs7(1)">&#10095;</div>
+                                                <span class="w3-badge demo7 w3-border w3-transparent w3-hover-white" onclick="currentDiv7(1)"></span>
+                                                <span class="w3-badge demo7 w3-border w3-transparent w3-hover-white" onclick="currentDiv7(2)"></span>
+                                                <span class="w3-badge demo7 w3-border w3-transparent w3-hover-white" onclick="currentDiv7(3)"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="container left">
+                                <div id = "ct9" class="content">
+                                    <div class="tooltip">
+                                        <h2>七月---客鼓鳴心-鼓王爭霸戰</h2>
+                                        <span class="tooltiptextleft">為慶祝花蓮瑞穗鄉富源社區（舊名拔仔庄）保安宮供奉主神城隍爺聖誕，保安宮始建自清光緒14年（西元1889年），一直是當地居民信仰中心，居民為了感謝城隍爺保佑、守護，每到城隍聖誕之時，以鼓陣遶境方式慶祝，鑼鼓喧天、熱鬧非凡，這種特別的慶祝活動已有一百多年歷史。</span>
+                                        <p></p>
+                                        <div class="w3-content w3-display-container" style="max-width: 300px" style="max-height: 250px">
+                                            <img class="mySlides8" src="鼓王1.jpg" style="max-width: 100%" style="max-height: 100%"> 
+                                            <img class="mySlides8" src="鼓王2.jpg" style="max-width: 100%" style="max-height: 100%">
+                                            <img class="mySlides8" src="鼓王3.jpeg" style="max-width: 100%" style="max-height: 100%">
+                                            <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width: 100%">
+                                                <div class="w3-left w3-hover-text-khaki" onclick="plusDivs8(-1)">&#10094;</div>
+                                                <div class="w3-right w3-hover-text-khaki" onclick="plusDivs8(1)">&#10095;</div>
+                                                <span class="w3-badge demo8 w3-border w3-transparent w3-hover-white" onclick="currentDiv8(1)"></span>
+                                                <span class="w3-badge demo8 w3-border w3-transparent w3-hover-white" onclick="currentDiv8(2)"></span>
+                                                <span class="w3-badge demo8 w3-border w3-transparent w3-hover-white" onclick="currentDiv8(3)"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="container right">
+                                <div id = "ct10" class="content">
+                                    <div class="tooltip">
+                                        <h2>八月---「義魄千秋」義民祭</h2>
+                                        <span class="tooltiptextright">清乾隆年間，客家人為了保家衛民，偕同閩南人及平埔原住民組成義民軍，除暴安良與叛軍對抗，百餘人犧牲了寶貴生命守護家園，清廷為了紀念這些陣亡的義民，建廟供後代祭拜，義民爺也成為臺灣客家人獨特的信仰。新竹縣新埔枋寮褒忠義民廟是臺灣首屈一指的義民廟，也是新竹地區客家人的信仰中心，是凝聚客家社群的一股重要力量，其內有清高宗〈乾隆〉賜頒御題「褒忠」二字匾額，以彰顯「嘉獎忠良」。</span>
+                                        <p></p>
+                                        <div class="w3-content w3-display-container" style="max-width: 300px" style="max-height: 250px">
+                                            <img class="mySlides9" src="義民1.jpg" style="max-width: 100%" style="max-height: 100%"> 
+                                            <img class="mySlides9" src="義民2.jpg" style="max-width: 100%" style="max-height: 100%">
+                                            <img class="mySlides9" src="義民3.jpeg" style="max-width: 100%" style="max-height: 100%">
+                                            <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width: 100%">
+                                                <div class="w3-left w3-hover-text-khaki" onclick="plusDivs9(-1)">&#10094;</div>
+                                                <div class="w3-right w3-hover-text-khaki" onclick="plusDivs9(1)">&#10095;</div>
+                                                <span class="w3-badge demo9 w3-border w3-transparent w3-hover-white" onclick="currentDiv9(1)"></span>
+                                                <span class="w3-badge demo9 w3-border w3-transparent w3-hover-white" onclick="currentDiv9(2)"></span>
+                                                <span class="w3-badge demo9 w3-border w3-transparent w3-hover-white" onclick="currentDiv9(3)"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="container left">
+                                <div id = "ct11" class="content">
+                                    <div class="tooltip">
+                                        <h2>十月---雲林‧詔安客家文化節</h2>
+                                        <span class="tooltiptextleft">詔安客家族群，祖先來自於福建省漳州府詔安縣，渡海來臺拓墾定居距今已有300年。詔安客家文化節是屬於雲林客家人的文化活動，詔安客族居民深覺詔安文化面臨失傳，自動發起整合籌劃辦理，打造「雲林詔安」新亮點，以深入詔安生活進行文化保存與創新為主軸，並將詔安三鄉鎮南北雙環整合。</span>
+                                        <p></p>
+                                        <div class="w3-content w3-display-container" style="max-width: 300px" style="max-height: 250px">
+                                            <img class="mySlides10" src="雲林1.jpg" style="max-width: 100%" style="max-height: 100%"> 
+                                            <img class="mySlides10" src="雲林2.jpg" style="max-width: 100%" style="max-height: 100%">
+                                            <img class="mySlides10" src="雲林3.jpg" style="max-width: 100%" style="max-height: 100%">
+                                            <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width: 100%">
+                                                <div class="w3-left w3-hover-text-khaki" onclick="plusDivs10(-1)">&#10094;</div>
+                                                <div class="w3-right w3-hover-text-khaki" onclick="plusDivs10(1)">&#10095;</div>
+                                                <span class="w3-badge demo10 w3-border w3-transparent w3-hover-white" onclick="currentDiv10(1)"></span>
+                                                <span class="w3-badge demo10 w3-border w3-transparent w3-hover-white" onclick="currentDiv10(2)"></span>
+                                                <span class="w3-badge demo10 w3-border w3-transparent w3-hover-white" onclick="currentDiv10(3)"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="container right">
+                                <div id = "ct12" class="content">
+                                    <div class="tooltip">
+                                        <h2>十一月---國姓搶成功</h2>
+                                        <span class="tooltiptextright">國姓鄉是南投縣最大的客家聚落，1999年撼動全臺的921大地震，讓南投國姓鄉受創嚴重；隔年11月為振奮鄉親、重建士氣，在政府與民間社團的助力下舉辦首屆搶成功活動。</span>
+                                        <p></p>
+                                        <div class="w3-content w3-display-container" style="max-width: 300px" style="max-height: 250px">
+                                            <img class="mySlides11" src="成功1.jpg" style="max-width: 100%" style="max-height: 100%"> 
+                                            <img class="mySlides11" src="成功2.jpg" style="max-width: 100%" style="max-height: 100%">
+                                            <img class="mySlides11" src="成功3.jpg" style="max-width: 100%" style="max-height: 100%">
+                                            <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width: 100%">
+                                                <div class="w3-left w3-hover-text-khaki" onclick="plusDivs11(-1)">&#10094;</div>
+                                                <div class="w3-right w3-hover-text-khaki" onclick="plusDivs11(1)">&#10095;</div>
+                                                <span class="w3-badge demo11 w3-border w3-transparent w3-hover-white" onclick="currentDiv11(1)"></span>
+                                                <span class="w3-badge demo11 w3-border w3-transparent w3-hover-white" onclick="currentDiv11(2)"></span>
+                                                <span class="w3-badge demo11 w3-border w3-transparent w3-hover-white" onclick="currentDiv11(3)"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="container left">
+                                <div id = "ct13" class="content">
+                                    <div class="tooltip">
+                                        <h2>十一月---臺東好米收冬祭</h2>
+                                        <span class="tooltiptextleft">臺灣東部擁有絕佳的地理環境，氣候、水質、土壤、日照及無工業污染等諸多有利條件下，蘊育出名副其實的「縱谷好米」，日治時期，許多客家人攜家帶眷遷移至臺東，在鹿野鄉、關山鎮、池上鄉落地生根，以務農者居多。很多人只知道東部居住許多原住民，卻不知客家文化在東部也占了一席之地。</span>
+                                        <p></p>
+                                        <div class="w3-content w3-display-container" style="max-width: 300px; max-height: 250px">
+                                            <img class="mySlides12" src="米1.jpeg" style="width: 100%; height: 100%"> 
+                                            <img class="mySlides12" src="米2.jpeg" style="width: 100%; height: 100%">
+                                            <img class="mySlides12" src="米3.jpeg" style="width: 100%; height: 100%">
+                                            <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width: 100%">
+                                                <div class="w3-left w3-hover-text-khaki" onclick="plusDivs12(-1)">&#10094;</div>
+                                                <div class="w3-right w3-hover-text-khaki" onclick="plusDivs12(1)">&#10095;</div>
+                                                <span class="w3-badge demo12 w3-border w3-transparent w3-hover-white" onclick="currentDiv12(1)"></span>
+                                                <span class="w3-badge demo12 w3-border w3-transparent w3-hover-white" onclick="currentDiv12(2)"></span>
+                                                <span class="w3-badge demo12 w3-border w3-transparent w3-hover-white" onclick="currentDiv12(3)"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="container right">
+                                <div class="content">
+                                    <div class="tooltip">
+                                        <h2>十一月---客家婚禮‧客家宴</h2>
+                                        <span  id = "ct14" class="tooltiptextright">高雄市在民國102年舉辦第一場客家藍衫集團婚禮後，即年年連續舉辦，吸引不少客籍及非客籍年輕的新人參與，婚禮的舉辦是在11月農作秋收時節，象徵一段好姻緣的開花結果。</span>
+                                        <p></p>
+                                        <div class="w3-content w3-display-container" style="max-width: 300px" style="max-height: 250px">
+                                            <img class="mySlides13" src="婚1.jpg" style="max-width: 100%" style="max-height: 100%"> 
+                                            <img class="mySlides13" src="婚2.jpg" style="max-width: 100%" style="max-height: 100%">
+                                            <img class="mySlides13" src="婚3.jpg" style="max-width: 100%" style="max-height: 100%">
+                                            <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width: 100%">
+                                                <div class="w3-left w3-hover-text-khaki" onclick="plusDivs13(-1)">&#10094;</div>
+                                                <div class="w3-right w3-hover-text-khaki" onclick="plusDivs13(1)">&#10095;</div>
+                                                <span class="w3-badge demo13 w3-border w3-transparent w3-hover-white" onclick="currentDiv13(1)"></span>
+                                                <span class="w3-badge demo13 w3-border w3-transparent w3-hover-white" onclick="currentDiv13(2)"></span>
+                                                <span class="w3-badge demo13 w3-border w3-transparent w3-hover-white" onclick="currentDiv13(3)"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- <foooter class="w3-container content" style="text-align: center;">
+    	2017©逢甲大學 資訊系<br>
+    	版權所有  翻版必究
+        </foooter> -->
+        <!-- javascript -->
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript" src="./assets/js/mailus.js"></script>
+
+        <script>        /* 幻燈片 */
+            var slideIndex = 1;
+            showDivs(slideIndex);
+
+            function plusDivs(n) {
+              showDivs(slideIndex += n);
+            }
+
+            function currentDiv(n) {
+              showDivs(slideIndex = n);
+            }
+
+            function showDivs(n) {
+              var i;
+              var x = document.getElementsByClassName("mySlides");
+              var dots = document.getElementsByClassName("demo");
+              if (n > x.length) {slideIndex = 1}    
+              if (n < 1) {slideIndex = x.length}
+              for (i = 0; i < x.length; i++) {
+                 x[i].style.display = "none";  
+              }
+              for (i = 0; i < dots.length; i++) {
+                 dots[i].className = dots[i].className.replace(" w3-white", "");
+              }
+              x[slideIndex-1].style.display = "block";  
+              dots[slideIndex-1].className += " w3-white";
+            }
+
+            var slideIndex1 = 1;
+            showDivs1(slideIndex1);
+
+            function plusDivs1(n) {
+              showDivs1(slideIndex1 += n);
+            }
+
+            function currentDiv1(n) {
+              showDivs1(slideIndex1 = n);
+            }
+
+            function showDivs1(n) {
+              var i;
+              var x = document.getElementsByClassName("mySlides1");
+              var dots = document.getElementsByClassName("demo1");
+              if (n > x.length) {slideIndex1 = 1}    
+              if (n < 1) {slideIndex1 = x.length}
+              for (i = 0; i < x.length; i++) {
+                 x[i].style.display = "none";  
+              }
+              for (i = 0; i < dots.length; i++) {
+                 dots[i].className = dots[i].className.replace(" w3-white", "");
+              }
+              x[slideIndex1-1].style.display = "block";  
+              dots[slideIndex1-1].className += " w3-white";
+            }
+
+            var slideIndex2 = 1;
+            showDivs2(slideIndex2);
+
+            function plusDivs2(n) {
+              showDivs2(slideIndex2 += n);
+            }
+
+            function currentDiv2(n) {
+              showDivs2(slideIndex2 = n);
+            }
+
+            function showDivs2(n) {
+              var i;
+              var x = document.getElementsByClassName("mySlides2");
+              var dots = document.getElementsByClassName("demo2");
+              if (n > x.length) {slideIndex2 = 1}    
+              if (n < 1) {slideIndex2 = x.length}
+              for (i = 0; i < x.length; i++) {
+                 x[i].style.display = "none";  
+              }
+              for (i = 0; i < dots.length; i++) {
+                 dots[i].className = dots[i].className.replace(" w3-white", "");
+              }
+              x[slideIndex2-1].style.display = "block";  
+              dots[slideIndex2-1].className += " w3-white";
+            }
+
+            var slideIndex3 = 1;
+            showDivs3(slideIndex3);
+
+            function plusDivs3(n) {
+              showDivs3(slideIndex3 += n);
+            }
+
+            function currentDiv3(n) {
+              showDivs3(slideIndex3 = n);
+            }
+
+            function showDivs3(n) {
+              var i;
+              var x = document.getElementsByClassName("mySlides3");
+              var dots = document.getElementsByClassName("demo3");
+              if (n > x.length) {slideIndex3 = 1}    
+              if (n < 1) {slideIndex3 = x.length}
+              for (i = 0; i < x.length; i++) {
+                 x[i].style.display = "none";  
+              }
+              for (i = 0; i < dots.length; i++) {
+                 dots[i].className = dots[i].className.replace(" w3-white", "");
+              }
+              x[slideIndex3-1].style.display = "block";  
+              dots[slideIndex3-1].className += " w3-white";
+            }
+
+            var slideIndex4 = 1;
+            showDivs4(slideIndex4);
+
+            function plusDivs4(n) {
+              showDivs4(slideIndex4 += n);
+            }
+
+            function currentDiv4(n) {
+              showDivs4(slideIndex4 = n);
+            }
+
+            function showDivs4(n) {
+              var i;
+              var x = document.getElementsByClassName("mySlides4");
+              var dots = document.getElementsByClassName("demo4");
+              if (n > x.length) {slideIndex4 = 1}    
+              if (n < 1) {slideIndex4 = x.length}
+              for (i = 0; i < x.length; i++) {
+                 x[i].style.display = "none";  
+              }
+              for (i = 0; i < dots.length; i++) {
+                 dots[i].className = dots[i].className.replace(" w3-white", "");
+              }
+              x[slideIndex4-1].style.display = "block";  
+              dots[slideIndex4-1].className += " w3-white";
+            }
+
+            var slideIndex5 = 1;
+            showDivs5(slideIndex5);
+
+            function plusDivs5(n) {
+              showDivs5(slideIndex5 += n);
+            }
+
+            function currentDiv5(n) {
+              showDivs5(slideIndex5 = n);
+            }
+
+            function showDivs5(n) {
+              var i;
+              var x = document.getElementsByClassName("mySlides5");
+              var dots = document.getElementsByClassName("demo5");
+              if (n > x.length) {slideIndex5 = 1}    
+              if (n < 1) {slideIndex5 = x.length}
+              for (i = 0; i < x.length; i++) {
+                 x[i].style.display = "none";  
+              }
+              for (i = 0; i < dots.length; i++) {
+                 dots[i].className = dots[i].className.replace(" w3-white", "");
+              }
+              x[slideIndex5-1].style.display = "block";  
+              dots[slideIndex5-1].className += " w3-white";
+            }
+
+            var slideIndex6 = 1;
+            showDivs6(slideIndex6);
+
+            function plusDivs6(n) {
+              showDivs6(slideIndex6 += n);
+            }
+
+            function currentDiv6(n) {
+              showDivs6(slideIndex6 = n);
+            }
+
+            function showDivs6(n) {
+              var i;
+              var x = document.getElementsByClassName("mySlides6");
+              var dots = document.getElementsByClassName("demo6");
+              if (n > x.length) {slideIndex6 = 1}    
+              if (n < 1) {slideIndex6 = x.length}
+              for (i = 0; i < x.length; i++) {
+                 x[i].style.display = "none";  
+              }
+              for (i = 0; i < dots.length; i++) {
+                 dots[i].className = dots[i].className.replace(" w3-white", "");
+              }
+              x[slideIndex6-1].style.display = "block";  
+              dots[slideIndex6-1].className += " w3-white";
+            }
+
+            var slideIndex7 = 1;
+            showDivs7(slideIndex7);
+
+            function plusDivs7(n) {
+              showDivs7(slideIndex7 += n);
+            }
+
+            function currentDiv7(n) {
+              showDivs7(slideIndex7 = n);
+            }
+
+            function showDivs7(n) {
+              var i;
+              var x = document.getElementsByClassName("mySlides7");
+              var dots = document.getElementsByClassName("demo7");
+              if (n > x.length) {slideIndex7 = 1}    
+              if (n < 1) {slideIndex7 = x.length}
+              for (i = 0; i < x.length; i++) {
+                 x[i].style.display = "none";  
+              }
+              for (i = 0; i < dots.length; i++) {
+                 dots[i].className = dots[i].className.replace(" w3-white", "");
+              }
+              x[slideIndex7-1].style.display = "block";  
+              dots[slideIndex7-1].className += " w3-white";
+            }
+
+            var slideIndex8 = 1;
+            showDivs8(slideIndex8);
+
+            function plusDivs8(n) {
+              showDivs8(slideIndex8 += n);
+            }
+
+            function currentDiv8(n) {
+              showDivs8(slideIndex8 = n);
+            }
+
+            function showDivs8(n) {
+              var i;
+              var x = document.getElementsByClassName("mySlides8");
+              var dots = document.getElementsByClassName("demo8");
+              if (n > x.length) {slideIndex8 = 1}    
+              if (n < 1) {slideIndex8 = x.length}
+              for (i = 0; i < x.length; i++) {
+                 x[i].style.display = "none";  
+              }
+              for (i = 0; i < dots.length; i++) {
+                 dots[i].className = dots[i].className.replace(" w3-white", "");
+              }
+              x[slideIndex8-1].style.display = "block";  
+              dots[slideIndex8-1].className += " w3-white";
+            }
+
+            var slideIndex9 = 1;
+            showDivs9(slideIndex9);
+
+            function plusDivs9(n) {
+              showDivs9(slideIndex9 += n);
+            }
+
+            function currentDiv9(n) {
+              showDivs9(slideIndex9 = n);
+            }
+
+            function showDivs9(n) {
+              var i;
+              var x = document.getElementsByClassName("mySlides9");
+              var dots = document.getElementsByClassName("demo9");
+              if (n > x.length) {slideIndex9 = 1}    
+              if (n < 1) {slideIndex9 = x.length}
+              for (i = 0; i < x.length; i++) {
+                 x[i].style.display = "none";  
+              }
+              for (i = 0; i < dots.length; i++) {
+                 dots[i].className = dots[i].className.replace(" w3-white", "");
+              }
+              x[slideIndex9-1].style.display = "block";  
+              dots[slideIndex9-1].className += " w3-white";
+            }
+
+            var slideIndex10 = 1;
+            showDivs10(slideIndex10);
+
+            function plusDivs10(n) {
+              showDivs10(slideIndex10 += n);
+            }
+
+            function currentDiv10(n) {
+              showDivs10(slideIndex10 = n);
+            }
+
+            function showDivs10(n) {
+              var i;
+              var x = document.getElementsByClassName("mySlides10");
+              var dots = document.getElementsByClassName("demo10");
+              if (n > x.length) {slideIndex10 = 1}    
+              if (n < 1) {slideIndex10 = x.length}
+              for (i = 0; i < x.length; i++) {
+                 x[i].style.display = "none";  
+              }
+              for (i = 0; i < dots.length; i++) {
+                 dots[i].className = dots[i].className.replace(" w3-white", "");
+              }
+              x[slideIndex10-1].style.display = "block";  
+              dots[slideIndex10-1].className += " w3-white";
+            }
+
+            var slideIndex11 = 1;
+            showDivs11(slideIndex11);
+
+            function plusDivs11(n) {
+              showDivs11(slideIndex11 += n);
+            }
+
+            function currentDiv11(n) {
+              showDivs11(slideIndex11 = n);
+            }
+
+            function showDivs11(n) {
+              var i;
+              var x = document.getElementsByClassName("mySlides11");
+              var dots = document.getElementsByClassName("demo11");
+              if (n > x.length) {slideIndex11 = 1}    
+              if (n < 1) {slideIndex11 = x.length}
+              for (i = 0; i < x.length; i++) {
+                 x[i].style.display = "none";  
+              }
+              for (i = 0; i < dots.length; i++) {
+                 dots[i].className = dots[i].className.replace(" w3-white", "");
+              }
+              x[slideIndex11-1].style.display = "block";  
+              dots[slideIndex11-1].className += " w3-white";
+            }
+
+            var slideIndex12 = 1;
+            showDivs12(slideIndex12);
+
+            function plusDivs12(n) {
+              showDivs12(slideIndex12 += n);
+            }
+
+            function currentDiv12(n) {
+              showDivs12(slideIndex12 = n);
+            }
+
+            function showDivs12(n) {
+              var i;
+              var x = document.getElementsByClassName("mySlides12");
+              var dots = document.getElementsByClassName("demo12");
+              if (n > x.length) {slideIndex12 = 1}    
+              if (n < 1) {slideIndex12 = x.length}
+              for (i = 0; i < x.length; i++) {
+                 x[i].style.display = "none";  
+              }
+              for (i = 0; i < dots.length; i++) {
+                 dots[i].className = dots[i].className.replace(" w3-white", "");
+              }
+              x[slideIndex12-1].style.display = "block";  
+              dots[slideIndex12-1].className += " w3-white";
+            }
+
+            var slideIndex13 = 1;
+            showDivs13(slideIndex13);
+
+            function plusDivs13(n) {
+              showDivs13(slideIndex13 += n);
+            }
+
+            function currentDiv13(n) {
+              showDivs13(slideIndex13 = n);
+            }
+
+            function showDivs13(n) {
+              var i;
+              var x = document.getElementsByClassName("mySlides13");
+              var dots = document.getElementsByClassName("demo13");
+              if (n > x.length) {slideIndex13 = 1}    
+              if (n < 1) {slideIndex13 = x.length}
+              for (i = 0; i < x.length; i++) {
+                 x[i].style.display = "none";  
+              }
+              for (i = 0; i < dots.length; i++) {
+                 dots[i].className = dots[i].className.replace(" w3-white", "");
+              }
+              x[slideIndex13-1].style.display = "block";  
+              dots[slideIndex13-1].className += " w3-white";
+            }
+
+        </script>
+
+        <script>        /* topButon */
+            // When the user scrolls down 20px from the top of the document, show the button
+            window.onscroll = function() {scrollFunction()};
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    document.getElementById("topButton").style.display = "block";
+                } else {
+                    document.getElementById("topButton").style.display = "none";
+                }
+            }
+
+            // When the user clicks on the button, scroll to the top of the document
+            function topFunction() {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            }
+        </script>
+
+    </div>
+</body>
+
+</html>
